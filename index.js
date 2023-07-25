@@ -46,3 +46,24 @@ Don’t use built-in functions (surprise!).
 Given the input array ["Gigli","Jay is  cool","Mavis","Phoebe","Thurber","Anna","Celeste","Elon"], 
 you should return "Anna". Remember, do not linearly iterate the array!
 */
+
+function minOfSortedRotated(arr){
+    var min = arr[0];
+    for (var i = 1; i < arr.length; i++){
+        if (arr[i] < min){
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+//Example:
+var arr = ["Gigli","Jay is  cool","Mavis","Phoebe","Thurber","Anna","Celeste","Elon"];
+console.log(minOfSortedRotated(arr)); //Anna
+
+//We set the min to the first value of the array.
+//We loop through the array starting at the second value.
+//If the value is less than the min, we set the min to the value.
+//We return the min.
+
+//#####################################################################################################################
