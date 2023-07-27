@@ -82,3 +82,33 @@ Example: if your function is given the inputs (" &-0379DEFXZ[abcz|", "6"),
 it should return false. If instead it is sent (" &-0379DEFXZ[abcz|", "c"), return true. 
 Remember, don’t iterate the string linearly!
 */
+
+function stringBinarySearch(str, char){
+    var mid = Math.floor(str.length/2);
+    if (str[mid] == char){
+        return true;
+    }
+    else if (str[mid] < char && str.length > 1){
+        return stringBinarySearch(str.slice(mid, Number.MAX_VALUE), char);
+    }
+    else if (str[mid] > char && str.length > 1){
+        return stringBinarySearch(str.slice(0, mid), char);
+    }
+    else return false;
+}
+
+//Example:
+var str = " &-0379DEFXZ[abcz|";
+console.log(stringBinarySearch(str, "6")); //false
+console.log(stringBinarySearch(str, "c")); //true
+
+//We set the mid to the middle of the string. using Math.floor to round down.
+//math.floor is used to round down to the nearest integer.
+//If the character is equal to the mid, we return true.
+//If the character is greater than the mid, we slice the string from the mid to the end of the string.
+//Using Number.MAX_VALUE to get the largest possible number.
+//If the character is less than the mid, we slice the string from the start to the mid.
+//If the string length is 1 and the character is not equal to the mid, we return false.
+//If the character is not found, we return false.
+
+//#####################################################################################################################
